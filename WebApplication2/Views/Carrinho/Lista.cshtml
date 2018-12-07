@@ -1,0 +1,6 @@
+﻿@model WebApplication2.Core.Models.Carrinho
+
+<span>
+    <span class="col-md-7">Total Items: @Model.Items.Sum(x=>x.Quantidade) </span>
+    <span class="col-md-7">R$: @Model.Items.Sum(x=> x.Produto.Preco * x.Quantidade) </span>
+</span>

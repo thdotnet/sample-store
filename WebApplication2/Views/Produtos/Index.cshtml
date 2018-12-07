@@ -1,0 +1,45 @@
+﻿@model WebApplication2.ViewModels.ProdutoListaViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+    &nbsp;
+</div>
+
+<div class="row">
+    <div class="col-md-5">
+        <img src="@Model.ImagemPrincipal" class="img-responsive" />
+    </div>
+    <div class="col-md-7">
+        <div>
+            @Model.Nome
+        </div>
+        <div>
+            @Model.Descricao
+        </div>
+        <div>
+            R$ @Model.Preco
+        </div>
+    </div>
+    <div class="row">
+        <button data-id="@Model.Id" class="btn-carrinho btn btn-success">Adicionar</button>
+    </div>
+</div>
+@section Scripts
+    {
+    <script>
+        $(function () {
+            $(".btn-carrinho").each(function () {
+                var btn = $(this);
+                btn.click(function () {
+                    var id = btn.data("id");
+
+                    $.post('/Carrinho/Add', { produtoId: id }, function (data) {
+                        $(".carrinho-placeholder").html(data);
+                    });
+                });
+            });
+        });
+    </script>
+}

@@ -1,0 +1,18 @@
+﻿@model WebApplication2.Core.Models.Carrinho
+
+    <div class="row">
+        &nbsp;
+    </div>
+
+    <div class="row">
+        <h4>Pedido recebido com sucesso: @Guid.NewGuid()</h4>
+
+        <ul>
+            @foreach (var item in Model.Items)
+            {
+                <li>@item.Produto.Nome  <small>x @item.Quantidade</small></li>
+            }
+        </ul>
+
+        <div>Total: R$ @Model.Items.Sum(x => x.Produto.Preco * x.Quantidade)</div>
+    </div>
